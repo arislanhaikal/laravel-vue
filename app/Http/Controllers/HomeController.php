@@ -15,4 +15,9 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+    public function app()
+    {
+        return view('layouts.app');
+    }
 }

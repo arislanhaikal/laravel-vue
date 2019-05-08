@@ -20,9 +20,8 @@ window.Vue = require('vue');
 // const files = require.context('./', true, /\.vue$/i);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
-Vue.component('home-page', require('./components/HomeComponent.vue').default);
-Vue.component('contact-form', require('./components/ContactComponent.vue').default);
-Vue.component('contact-list', require('./components/ContactListComponent.vue').default);
+import Routers from './routers.js';
+import App from './view/App';
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -31,5 +30,7 @@ Vue.component('contact-list', require('./components/ContactListComponent.vue').d
  */
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    router: Routers,
+    render: h => h(App),
 });
