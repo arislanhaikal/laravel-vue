@@ -20,8 +20,16 @@ window.Vue = require('vue');
 // const files = require.context('./', true, /\.vue$/i);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
-import Routers from './routers.js';
+import router from './routers.js';
 import App from './view/App';
+
+Object.defineProperty(Vue.prototype, '$bus', {
+    get() {
+        return this.$root.bus;
+    }
+});
+
+window.bus = new Vue({});
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -31,6 +39,9 @@ import App from './view/App';
 
 const app = new Vue({
     el: '#app',
-    router: Routers,
+    router,
+    data: {
+        bus: bus
+    },
     render: h => h(App),
 });

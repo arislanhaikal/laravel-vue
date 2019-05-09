@@ -1,5 +1,6 @@
 <template>
 	<div>
+		<search></search>
 		<div class="table-responsive-md">
 			<div v-if="success" class="alert alert-success mt-3">
             Contact deleted!
@@ -32,6 +33,9 @@
 </template>
 
 <script>
+
+import Search from './SearchComponent.vue'
+
 export default {
 		data(){
 			return {
@@ -40,9 +44,15 @@ export default {
 				errors: false,
 			}
 		},
+		components: {
+			Search
+		},
 		mounted(){
-			axios.get('/api/contact').then(response => {
-				this.contacts = response.data;
+			this.getContact();
+
+			// listen when search
+			this.$bus.$on('search', params => {
+				this.getContact(params);
 			});
 		},
 		methods: {
@@ -53,12 +63,21 @@ export default {
 						this.success = true;
 						this.errors = false;
 					})
-					.catch(xxx => {
+					.catch(error => {
 						this.success = false;
 						this.errors = true;
 					});
 				}
 			},
+			getContact(params = null) {
+				axios.get('/api/contact', {
+					params: {
+						keywords: params
+					}
+				}).then(response => {
+						this.contacts = response.data;
+				});
+			}
 		}
 }
 </script>

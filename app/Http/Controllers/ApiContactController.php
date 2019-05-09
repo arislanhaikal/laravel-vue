@@ -7,9 +7,9 @@ use Illuminate\Http\Request;
 
 class ApiContactController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        return Contact::all();
+        return Contact::where('name', 'like', '%'.$request->keywords.'%')->where('name', '<>', '')->get();
     }
 
     public function store(Request $request)

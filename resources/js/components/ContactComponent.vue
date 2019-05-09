@@ -22,7 +22,7 @@
             <div v-if="errors && errors.message" class="text-danger">{{ errors.message[0] }}</div>
         </div>
 
-        <button type="submit" class="btn btn-primary">Send message</button>
+        <button type="submit" class="btn btn-primary" :disabled="!isValidForm">Send message</button>
 
     </form>
 </template>
@@ -49,6 +49,11 @@ export default {
                 }
             });
         },
-    }
+    },
+    computed: {
+        isValidForm() {
+            return this.fields.name && this.fields.email && this.fields.message;
+        }
+    },
 }
 </script>
