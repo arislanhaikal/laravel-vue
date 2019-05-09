@@ -11,8 +11,4 @@
 |
 */
 
-// Route::get('/{any}', 'HomeController@app')->where('any', '.*');
-
-Route::get('/', 'HomeController@index')->name('home');
-Route::get('contact', 'ContactController@index')->name('contact');
-Route::get('admin', 'ContactController@show')->name('admin');
+Route::get('/{any}', 'HomeController@app')->where('any', '.*');
