@@ -64,14 +64,18 @@ export default {
 								this.$swal({
                     title: 'Success!',
                     text: 'Pesan berhasil dihapus!',
-                    type: 'success',
+										type: 'success',
+										timer: 2000,
+										showConfirmButton: false,
                 });
 							})
 							.catch(error => {
 								this.$swal({
                     title: 'Error!',
                     text: 'Pesan gagal dihapus!',
-                    type: 'error',
+										type: 'error',
+										timer: 2000,
+										showConfirmButton: false,
                 });
 							});
 						}

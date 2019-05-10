@@ -44,6 +44,8 @@ export default {
                     title: 'Success!',
                     text: 'Pesan berhasil di edit!',
                     type: 'success',
+                    timer: 2000,
+                    showConfirmButton: false,
                 });
                 this.$router.replace('/admin');
             }).catch(error => {

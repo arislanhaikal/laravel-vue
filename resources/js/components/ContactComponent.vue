@@ -40,6 +40,8 @@ export default {
                     title: 'Success!',
                     text: 'Pesan berhasil terkirim!',
                     type: 'success',
+                    timer: 2000,
+                    showConfirmButton: false,
                 });
             }).catch(error => {
                 if (error.response.status === 422) {
