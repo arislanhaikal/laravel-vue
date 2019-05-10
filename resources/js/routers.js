@@ -6,6 +6,7 @@ import VueRouter from 'vue-router'
 import Home from './components/HomeComponent'
 import Contact from './components/ContactComponent'
 import Admin from './components/ContactListComponent'
+import AdminEdit from './components/ContactEditComponent'
 
 Vue.use(VueRouter)
 
@@ -26,6 +27,11 @@ const routers = new VueRouter({
             path: '/admin',
             name: 'admin',
             component: Admin
+        },
+        {
+            path: '/admin/:id',
+            name: 'adminEdit',
+            component: AdminEdit
         }
     ]
 });

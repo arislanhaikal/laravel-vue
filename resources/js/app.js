@@ -31,6 +31,16 @@ Object.defineProperty(Vue.prototype, '$bus', {
 
 window.bus = new Vue({});
 
+// Sweet Alert
+import VueSweetalert2 from 'vue-sweetalert2';
+
+const options = {
+    confirmButtonColor: '#38c172',
+    cancelButtonColor: '#e3342f',
+    confirmButtonText: 'Yes'
+}
+Vue.use(VueSweetalert2, options);
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

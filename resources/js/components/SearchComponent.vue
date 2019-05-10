@@ -11,12 +11,6 @@
 
 <script>
 	export default {
-		props: {
-			limit: {
-				type: Number,
-				default: 20
-			}
-		},
 		data() {
 			return {
 				keyword: ''

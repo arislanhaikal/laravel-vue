@@ -19,4 +19,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('contact', 'ApiContactController@index');
 Route::post('contact', 'ApiContactController@store');
+Route::get('contact/{id}', 'ApiContactController@show');
+Route::put('contact/{id}', 'ApiContactController@update');
 Route::delete('contact/{id}', 'ApiContactController@delete');

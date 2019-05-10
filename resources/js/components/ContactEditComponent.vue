@@ -31,22 +31,39 @@ export default {
             errors: {},
         }
     },
+    mounted(){
+        this.getContact();
+    },
     methods: {
         submit() {
             this.errors = {};
-            axios.post('/api/contact', this.fields).then(response => {
+            let id = this.$route.params.id;
+            axios.put('/api/contact/' + id, this.fields).then(response => {
                 this.fields = {};
                 this.$swal({
                     title: 'Success!',
-                    text: 'Pesan berhasil terkirim!',
+                    text: 'Pesan berhasil di edit!',
                     type: 'success',
                 });
+                this.$router.replace('/admin');
             }).catch(error => {
                 if (error.response.status === 422) {
                     this.errors = error.response.data.errors || {};
                 }
             });
         },
+
+        getContact() {
+            let id = this.$route.params.id;
+            axios.get('/api/contact/' + id).then(response => {
+                this.fields = response.data;
+            })
+            .catch(error => {
+                if (error.response.status === 422) {
+                    this.errors = error.response.data.errors || {};
+                }
+            });
+        }
     },
     computed: {
         isValidForm() {

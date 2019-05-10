@@ -25,6 +25,19 @@ class ApiContactController extends Controller
         return response()->json('success', 200);
     }
 
+    public function show($id)
+    {
+        return Contact::findOrFail($id);
+    }
+
+    public function update($id, Request $request)
+    {
+        $contact = Contact::findOrFail($id);
+        $contact->update($request->all());
+
+        return response()->json('success', 200);
+    }
+
     public function delete($id)
     {
         $contact = Contact::findOrFail($id);
