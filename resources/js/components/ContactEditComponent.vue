@@ -38,7 +38,7 @@ export default {
         submit() {
             this.errors = {};
             let id = this.$route.params.id;
-            axios.put('/api/contact/' + id, this.fields).then(response => {
+            axios.put('/contact/' + id, this.fields).then(response => {
                 this.fields = {};
                 this.$swal({
                     title: 'Success!',
@@ -57,7 +57,7 @@ export default {
 
         getContact() {
             let id = this.$route.params.id;
-            axios.get('/api/contact/' + id).then(response => {
+            axios.get('/contact/' + id).then(response => {
                 this.fields = response.data;
             })
             .catch(error => {

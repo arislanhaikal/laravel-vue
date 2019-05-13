@@ -34,7 +34,7 @@ export default {
     methods: {
         submit() {
             this.errors = {};
-            axios.post('/api/contact', this.fields).then(response => {
+            axios.post('contact', this.fields).then(response => {
                 this.fields = {};
                 this.$swal({
                     title: 'Success!',

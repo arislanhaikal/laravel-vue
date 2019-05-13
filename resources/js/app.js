@@ -22,6 +22,7 @@ window.Vue = require('vue');
 
 import router from './routers.js';
 import App from './view/App';
+import VueAxios from 'vue-axios';
 
 Object.defineProperty(Vue.prototype, '$bus', {
     get() {
@@ -40,6 +41,18 @@ const options = {
     confirmButtonText: 'Yes'
 }
 Vue.use(VueSweetalert2, options);
+
+
+// Router Auth
+axios.defaults.baseURL = 'http://localhost:8000/api';
+Vue.use(VueAxios, axios);
+Vue.router = router
+Vue.use(require('@websanova/vue-auth'), {
+    auth: require('@websanova/vue-auth/drivers/auth/bearer.js'),
+    http: require('@websanova/vue-auth/drivers/http/axios.1.x.js'),
+    router: require('@websanova/vue-auth/drivers/router/vue-router.2.x.js'),
+});
+App.router = Vue.router
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

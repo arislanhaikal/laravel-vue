@@ -23,8 +23,17 @@
                         <li class="nav-item">
                             <router-link class="nav-link" :to="{name: 'contact'}">Contact</router-link>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item" v-if="$auth.check()">
                             <router-link class="nav-link" :to="{name: 'admin'}">Admin</router-link>
+                        </li>
+                        <li class="nav-item" v-if="!$auth.check()">
+                            <router-link class="nav-link" :to="{name: 'login'}">Login</router-link>
+                        </li>
+                        <li class="nav-item" v-if="!$auth.check()">
+                            <router-link class="nav-link" :to="{name: 'register'}">Register</router-link>
+                        </li>
+                        <li class="nav-item" v-if="$auth.check()">
+                            <a href="#" @click.prevent="$auth.logout()" class="nav-link">Logout</a>
                         </li>
                     </ul>
                 </div>

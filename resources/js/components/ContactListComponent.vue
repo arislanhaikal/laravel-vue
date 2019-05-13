@@ -59,36 +59,36 @@ export default {
 						showCancelButton: true,
 					}).then((result) => {
 						if (result.value) {
-							axios.delete('/api/contact/'+ id).then((resp) =>{
+							axios.delete('/contact/'+ id).then((resp) =>{
 								this.contacts.splice(index, 1);
 								this.$swal({
-                    title: 'Success!',
-                    text: 'Pesan berhasil dihapus!',
-										type: 'success',
-										timer: 2000,
-										showConfirmButton: false,
-                });
+									title: 'Success!',
+									text: 'Pesan berhasil dihapus!',
+									type: 'success',
+									timer: 2000,
+									showConfirmButton: false,
+        						});
 							})
 							.catch(error => {
 								this.$swal({
-                    title: 'Error!',
-                    text: 'Pesan gagal dihapus!',
-										type: 'error',
-										timer: 2000,
-										showConfirmButton: false,
-                });
+									title: 'Error!',
+									text: 'Pesan gagal dihapus!',
+									type: 'error',
+									timer: 2000,
+									showConfirmButton: false,
+                				});
 							});
 						}
 					})
 
 			},
 			getContact(params = null) {
-				axios.get('/api/contact', {
+				axios.get('/contact', {
 					params: {
 						keywords: params
 					}
 				}).then(response => {
-						this.contacts = response.data;
+					this.contacts = response.data;
 				});
 			}
 		}

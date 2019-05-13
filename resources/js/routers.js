@@ -7,6 +7,8 @@ import Home from './components/HomeComponent'
 import Contact from './components/ContactComponent'
 import Admin from './components/ContactListComponent'
 import AdminEdit from './components/ContactEditComponent'
+import Login from './components/Auth/LoginComponent'
+import Register from './components/Auth/RegisterComponent'
 
 Vue.use(VueRouter)
 
@@ -26,12 +28,28 @@ const routers = new VueRouter({
         {
             path: '/admin',
             name: 'admin',
-            component: Admin
+            component: Admin,
+            meta: {
+                auth: true
+            }
         },
         {
             path: '/admin/:id',
             name: 'adminEdit',
-            component: AdminEdit
+            component: AdminEdit,
+            meta: {
+                auth: true
+            }
+        },
+        {
+            path: '/register',
+            name: 'register',
+            component: Register
+        },
+        {
+            path: '/login',
+            name: 'login',
+            component: Login
         }
     ]
 });
